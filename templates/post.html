@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        <script src="/resources/ckeditor/ckeditor.js"></script>
+        <script src="/resources/bootstrap/js/bootstrap.js"></script>
+	<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
+        <script type="text/javascript">
+            $(document).ready(init);
+            function init() {
+                var w=$(document).width();
+                $('#editor').css('width',0.6*w+"px");
+                $('#editor').css('margin-left',0.2*w+"px");
+                $('#editor').css('height',$(document).height()+"px");
+                CKEDITOR.replace("content");
+            }
+        </script>
+    </head>
+    <body>
+        <div id="editor" style="margin-top:20px">
+            {% for error in errors %}
+            <p style="color: red">{{error}}</p>
+            {% endfor %}
+            
+            <form action="" method="post">
+                
+                <input name="title" type="text" placeholder="title">{% csrf_token %}
+                <textarea name="content" style="height: 100%;margin:0;padding:0;"></textarea>
+                <p><select name="class" style="width:100px">
+                    {% for item in classes %}
+                    <option value="{{item.id}}">{{item.name}}</option>
+                    {% endfor %}
+                    </select></p>
+                    <p><input type="text" name="img" placeholder="cover image"> </p>
+                <button type="submit">Submit</button>
+            </form>
+            
+        </div>
+    </body>
+    
+    
+</html>

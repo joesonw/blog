@@ -1,0 +1,84 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>  
+                
+                <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+                <meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+                <script src="/resources/bootstrap/js/bootstrap.js"></script>
+				<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
+                <!--<link rel="stylesheet" href="../resources/css/home.css">-->
+                <link rel="stylesheet/less" type="text/css" href="/resources/css/home.less"/>
+                <script src="/resources/js/less.js" type="text/javascript"></script>
+                <link href="/resources/syntax/styles/shCoreDjango.css" rel="stylesheet" type="text/css" />
+                <link href="/resources/syntax/styles/shThemeDjango.css" rel="stylesheet" type="text/css" />
+                <script src="/resources/syntax/scripts/shCore.js" type="text/javascript"></script>
+                <script src="/resources/syntax/scripts/shBrushPython.js" type="text/javascript"></script>
+                <script src="/resources/jscroll/jquery.jscrollpane.min.js" type="text/javascript"></script>
+                <script src="/resources/jscroll/jquery.mousewheel.js" type="text/javascript"></script>
+                <script src="/resources/jscroll/mwheelIntent.js" type="text/javascript"></script>
+                <link href="/resources/jscroll/jquery.jscrollpane.css" rel="stylesheet" type="text/css"/>
+                <title>HOME</title>
+                <script type="text/javascript">
+                    //width auto-adjust
+                    $(document).ready(init);
+                    $(window).resize(resize);
+                    function resize() {
+                        var w=$(window).width();
+                        var h=$(window).height();
+                        //------自适应大小------
+                        $('div#main_area').width(0.9*w+"px");
+                        $('div#main_area').height(0.9*h+"px");
+                        $('div#main_area').css('margin-left',0.05*w+"px");
+                        $('div#main_area').css('margin-top',0.05*h+"px");
+                        $('div#profile_area').height(0.9*h-24+"px");
+                    }
+                    function HighlighterOn() {
+                        $('div.line','td.gutter').each(function(i) {
+                            $(this).html("<a href=#>"+i+"</a>");
+                        })
+                        $('div.syntaxhighlighter').css("height","500px")
+                        $('div.syntaxhighlighter').animate({
+                            scrollTop:  $(".number190").offset().top
+                        },0)
+                    }
+                    function init() {
+                        resize();
+                        //----Syntax高亮脚本-----
+                        SyntaxHighlighter.config.tagName="textarea";
+                        SyntaxHighlighter.config.callBack="HighlighterOn";
+                        SyntaxHighlighter.defaults['first-line']=0;
+                        SyntaxHighlighter.all();
+                        //-----滚动条美化----------
+                        $('div#main_area').jScrollPane();
+                        
+                        //---读取默认图像-----
+                        $('img').error(function() {
+                            $(this).attr('src',"../resources/images/default-profile.gif");
+                        })
+                        $('img').each(function(i) {
+                            if ($(this).attr('src')=="") {
+                                $(this).attr('src',"../resources/images/default-profile.gif");
+                            }
+                        })
+                        
+                    }
+                    
+                </script>
+        </head>
+	<body>
+            <div id="main_area">
+                <div id="panel_area">
+                    <div id="profile_area">
+                        <div id="profile_image">
+                            <img id="profile" src=""/>
+                        </div>
+                        <div id="user_info">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+	</body>
+        
+</html>

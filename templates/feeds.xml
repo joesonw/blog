@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<?xml:stylesheet type="text/xsl" href="/resources/feeds.xsl"?>
+<rss version="2.0>
+<channel>
+    <title>Djwong.net Technology Blog</title>
+    <link>http://djwong.net</link>
+    <description>AS3,Java,PHP,Python,C++</description>
+    <language>en-us</language>
+    <pubDate></pubDate>
+    <lastBuildDate>{{lastUpdate}}</lastBuildDate>
+    {% for item in feeds %}
+    <item>
+        <title>{{item.title}}</title>
+        <link>http://djwong.net/article/{{item.tid}}</link>
+        <category>{{item.aclass.name}}</category>
+        <pubDate>{{item.time_stamp}}</pubDate>
+    </item>
+    {% endfor %}
+</channel>

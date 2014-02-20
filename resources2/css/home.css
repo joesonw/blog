@@ -1,0 +1,35 @@
+body {
+    background-color: #9fdfe8;
+}
+div#main_area {
+    background-color:#cbfebc;
+    border-radius: 12px;
+    height:100%;
+    overflow: auto;
+}
+div#profile_image {
+    width: 85px;
+    height: 85px;
+    overflow: hidden;
+    position: relative;
+    top:  10px;
+    left: 10px;
+}
+div#panel_area {
+    position: relative;
+    top:12px;
+    left:12px;
+    background-color: rgba(186, 237, 171, 0.6);
+    width:240px;
+    border-radius: 12px 0 0 12px;
+}
+div#profile_area {
+    text-align: left;
+}
+img#profile {
+    background: transparent none repeat scroll 0 0;
+    display:block;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}

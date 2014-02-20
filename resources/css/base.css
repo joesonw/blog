@@ -1,0 +1,146 @@
+body {
+    /*background: url("../images/background.gif")*/
+   
+}
+/************article***********/
+p.comment {
+    margin-bottom:-7px;
+}
+div#comment_box {
+   border-top: 1px solid #999;
+   padding-top: 10px;
+}
+div.comment_item {
+    border-top: 1px solid #999;
+    margin-bottom: 20px;
+}
+/***********index**************/
+a.index_category_link {
+    color: #ccc;
+}
+div.article {
+    border: 1px solid #999;
+    border-bottom-color: rgba(0,0,0,0);
+    padding-bottom: 25px;
+    padding-top: 10px;
+    overflow: hidden;
+}
+p.comment_date {
+    color: #ccc;
+    font-size: 10px;
+    
+}
+div.comment_header {
+    text-align: left;
+}
+div.comment_content {
+    text-align: left;
+    margin-top: -15px;
+}
+p.date {
+    margin-bottom: -32px;
+    margin-top: -10px;
+    font-size: 10px;
+    color: #ccc;
+    text-align: left;
+    margin-left: 240px;
+}
+div.main_content {
+    overflow: hidden;
+}
+p.article_title {
+    text-align: left;
+    font-weight: 600;
+    margin-left: 240px;
+    color: #f35050;
+}
+div.article_content {
+    margin-left:240px;
+    margin-right:20px;
+    padding-top: 30px;
+    text-align: left;
+}
+.thumbimage {
+    max-width: 200px;
+    max-height: 200px;
+}
+img.index_img {
+    max-width: 200px;
+}
+
+div.article_img {
+    width:200px;
+    
+    margin-left: 20px;
+}
+div.comments_count {
+    float: right;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+    padding-top: 4px;
+    height:15px;
+    right:0;
+    vertical-align: center;
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+}
+/***********base**************/
+img.nav {
+    width:36px;
+    height:36px;
+    margin-bottom: -15px;
+}
+#header {
+    height: 150px;
+    background-color:#333;
+    border: 1px solid #333;
+    border-radius: 10px 10px 0 0;
+    margin-top: 12px;
+    color: #fff;
+}
+#footer {
+    text-align: center;
+    height:100px;
+}
+#search_bar {
+    margin-top: -60px;
+}
+#header_nav {
+    margin-top: 0px;
+    margin-left: 20px;
+    margin-right: 50px;
+}
+#logo {
+    margin-left: 20px;
+    margin-top: 20px;
+    margin-bottom: 49px;
+    font-size: 30px;
+    font-weight: bold;
+}
+p.intro {
+    margin-top: 5px;
+    font-size: 12px;
+    font-weight: bold;
+}
+li {
+    background: transparent;
+}
+#nav {
+    text-align: center;
+    z-index: 100;
+    position: fixed;
+    float: right;
+    right: 100px;
+    bottom: 50px;
+    
+}
+#content {
+    text-align: center;
+    border-bottom: 1px solid #999;
+    height: 100%;
+    margin-top:10px;
+    margin-bottom: 10px;
+    
+}

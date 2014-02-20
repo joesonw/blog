@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block contents %}
+<div style="margin-top:40px">
+    <div id="article_title" style="text-align:left;margin-left:0px;"><a href="#" style="font-size:16px;">{{article.title}}</a></div>
+    <p class="date" style="padding-top:12px;text-align:left;margin-left:0px" >@<a  href="/category/{{article.aclass.cid}}" class="index_category_link">{{article.aclass}}</a>/<a href ="/author/{{article.author}}" class="index_category_link">{{article.author}}</a>&nbsp;&nbsp;{{article.time_stamp.time}},{{article.time_stamp.month}}/{{article.time_stamp.day}}/{{article.time_stamp.year}}</p>
+<div id="article_content"><p>{{article.content|safe}}</p></div>
+
+<p style="text-align: left;font-size: 10px;border-top:1px solid #bbb;border-bottom:1px solid #bbb;">
+    {% if "lib.change_article" in perms %}
+    <a href="edit/"><i class="icon-edit"></i></a>&nbsp;
+    {% endif %}
+    {% if "lib.delete_article" in perms %}
+    <a href="javascript:cfm('delete/','Are you sure you want delete this article?');"><i class="icon-remove"></i></a>
+    {% endif %}
+</p>
+</div>
+<br/><br/><br/>
+<div id="comments_list">
+    {% for item in comments %}
+    
+    <div class="comment_item">
+        <div class="comment_header"><span style="font-size:11px;">#{{forloop.counter}}&nbsp;&nbsp;</span>{{item.author}}{% if "lib.delete_comment" in perms %}<a href="javascript:cfm('/delete_comment/{{item.cid}}','Are you sure you want delete this comment?');"><i class="icon-remove"></i></a>{% endif %}
+            <p class="comment_date">&nbsp;@&nbsp;{{item.time_stamp}}</p></div>
+    </div>  
+    <div class="comment_content">
+        {{item.content}}
+    </div>
+    {% endfor %}
+</div>
+<div id="comment_box">
+    <form method="post" action="/post_comment/{{article.tid}}/">{% csrf_token %}
+        <p class="comment"><input name="name" type="text" placeholder="Your name" style="width:100px;" maxlength="15" />&nbsp;<input name="email" type="text" placeholder="Your email" style="width:150px;" maxlength="40"/></p>
+        <p class="comment"><textarea name="content" rows="6" style="width:270px;" maxlength="200"></textarea></p>
+        <p class="comment"><button type="submit">Comment</button></p>
+    </form>
+</div>
+{% endblock %}

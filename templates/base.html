@@ -1,0 +1,102 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+                <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+                <meta http-equiv="Content-type" content="text/html;charset=UTF-8" /> 
+                <script src="/resources/bootstrap/js/bootstrap.js"></script>
+		<link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
+                <link rel="stylesheet" href="/resources/css/base.css">
+                <script src="/resources/ckeditor/ckeditor.js"></script>
+                <title>dJWong.Net-{{title}}</title>
+                <script type="text/javascript">
+                    //width auto-adjust
+                    $(document).ready(init);
+                    $(window).resize(resize);
+                    function resize() {
+                        var w=$(document).width();
+                        var h=$(document).height();
+                        $("#header").css("width",0.4*w+"px");
+                        $("#header").css("margin-left",0.3*w+"px");
+                        $("#footer").css("width",0.4*w+"px");
+                        $("#footer").css("margin-left",0.3*w+"px");
+                        $("#content").css("width",0.4*w+"px");
+                        $("#content").css("margin-left",0.3*w+"px");
+                        $("#search_bar").css("margin-left",(w*0.4-220)+"px")
+                        
+                    }
+                    function init() {
+                        resize();
+                        $('img').error(function() {
+                            $(this).attr('src',"/resources/images/no-img.png");
+                        })
+                        $('img').each(function(i) {
+                            if ($(this).attr('src')=="") {
+                                $(this).attr('src',"/resources/images/no-img.png");
+                            }
+                        })
+                        $('img.nav').tooltip();
+                        /*$(window).scroll(function() {
+                            $("#nav").css({right:"20px",bottom:$(window).scrollTop()+$(this).height-180+"px"});
+                        })*/
+                    }
+                    function cfm(next,msg) {
+                        var r=confirm(msg)
+                        if (r==true) {
+                            window.location=next;
+                        }
+                    }
+                </script>
+        </head>
+	<body>
+            <div id="nav">
+                <p><a href="#header"><img src="/resources/images/icons/icons_18x18/grey/over/005a_52.png" rel="tooltip" title="TOP" class="nav"/></a></p>
+                <p><a href="#footer"><img src="/resources/images/icons/icons_18x18/grey/over/005a_50.png" rel="tooltip" title="BOTTOM" class="nav"/></a></p>
+            </div>
+            
+            <div id="header" >
+                
+                <div id="logo" onselectstart="return false;">
+                        dJwOng.nEt  <p class="intro">AS3,Java,PHP,Python,C++</p>
+                </div>
+                <div id="header_nav">
+                    
+                    <ul class="nav nav-tabs">
+                        {% ifequal current_site "home" %}
+                        <li class="active">
+                        {% else %}
+                        <li>
+                        {% endifequal %}
+                            <a href="/" style="">Home</a>
+                        </li>
+                        {% ifequal current_site "projects" %}
+                        <li class="active">
+                        {% else %}
+                        <li>
+                        {% endifequal %}
+                            <a href="projects" style="color:f0f0f0;">Projects</a>
+                        </li>
+                        
+                    </ul>
+                    <div id="search_bar">
+                    <form class="form-search" method="get" action="/search/">
+                        <input name="q" type="text" class="input-medium search-query" placeholder="search">
+                    </form>
+                </div>
+                </div>
+                
+            </div>
+            <div id="content">
+                {% block contents %}
+                    
+                {% endblock %}
+            </div>  
+            <div id="footer">
+                <a href="/">Home</a>&nbsp;|
+                <a href="/about/">About</a>&nbsp;|
+                <a href="mailto:joesonw@gmail.com">Contact</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&copy;2012 djwong.net All Rights Reserved.  &nbsp;&nbsp;{% if "lib.add_article" in perms %}<a href="/post/"><i class="icon-share"></i></a>{% endif %}
+            </div>
+            
+	</body>
+        
+</html>

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block contents %}
+{% for item in articles %}
+<div class="article" >
+    <p class="article_title"><a href="/article/{{item.tid}}">{{item.title}}</a></p>
+    <p class="date">@<a  href="/category/{{item.aclass.cid}}" class="index_category_link">{{item.aclass}}</a>/<a href ="/author/{{item.author}}" class="index_category_link">{{item.author}}</a>&nbsp;&nbsp;{{item.time_stamp.time}},{{item.time_stamp.month}}/{{item.time_stamp.day}}/{{item.time_stamp.year}}</p>
+    <div class="comments_count">{{item.comments}}</div>
+    <div class="main_content">
+    <div class="article_img"><a href="/article/{{item.tid}}"><img class="index_img" src="{{item.img}}"/></a></div>
+    <div class="article_content">{{item.content|safe|escape}}</div>
+    </div>
+</div>
+{% empty %}
+<p>No articles at this time.</p>
+{% endfor %}
+<script type="text/javascript">
+    var h_array=new Array;
+    $(".index_img").each(function(i) {
+        $(this).load(function() {
+            var ratio=Number($(this).height()/$(this).width());
+            $(this).width("200px");
+            $(this).height(200*ratio+"px");
+            var target=$("div.article_content")[i]
+           $("img",target).remove();
+           $(target).text($(target).text().substr(0,350));
+           $(target).css("margin-top",-200*ratio+"px");
+        })
+     });
+  
+     /*
+      * 
+     $("div.article_content").each(function(i) {
+         $("img",this).remove()
+         $(this).text(($(this).text()).substr(0,400))
+     })
+      */
+</script>
+{% endblock %}

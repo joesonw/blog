@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block contents %}
+
+<div id='editable' style="margin-top:40px" contenteditable="true">
+<div id="article_title"><h2>{{title}}</h2></div>
+<div id="article_content"><p>{{content|safe}}</p></div>
+</div>
+<form name=save_form action="save/" method="post">{% csrf_token %}
+    <input type="hidden" name="title" value="">
+    <input type="hidden" name="content" value="">
+    <button type="submit" onclick="save()">Save</button>
+</form>
+<script type="text/javascript">
+    CKEDITOR.disableAutoInline = true;
+    CKEDITOR.inline( 'editable' );
+    function save() {
+        save_form.title.value=$('#article_title').text();
+        save_form.content.value=$('#article_content').html();
+        save_form.submit();
+    }
+</script>
+{% endblock %}
