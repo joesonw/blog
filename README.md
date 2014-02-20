@@ -1,1 +1,1 @@
-use ''' python manage.py ''' to get more details
+use ``` python manage.py ``` to get more details
